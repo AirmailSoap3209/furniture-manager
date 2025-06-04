@@ -1,0 +1,937 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+:root {
+    --primary: #2c3e50;
+    --primary-light: #34495e;
+    --secondary: #3498db;
+    --secondary-light: #5dade2;
+    --accent: #34495e;
+    --background: #f5f5f5;
+    --text: #2c3e50;
+    --text-light: #666;
+    --white: #fff;
+    --danger: #e74c3c;
+    --success: #2ecc71;
+    --warning: #f1c40f;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.logo img {
+    height: 40px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: none;
+    border: 2px solid transparent;
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background-color: var(--secondary);
+    border-color: var(--white);
+}
+
+main {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.search-filter {
+    display: flex;
+    gap: 1rem;
+}
+
+#furniture-search {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e1e1e1;
+    border-radius: var(--border-radius);
+    min-width: 300px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#furniture-search:focus {
+    border-color: var(--secondary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.view-container {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.view-container.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.buildings-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.building-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.building-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.building-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.building-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.building-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.floor-list {
+    list-style: none;
+    width: 100%;
+}
+
+.floor-item {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.floor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.floor-header h4 {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.floor-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.room-list {
+    list-style: none;
+    margin-left: 0;
+    width: 100%;
+}
+
+.room-item {
+    padding: 1rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.room-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.furniture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.furniture-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.furniture-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.furniture-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.furniture-details {
+    padding: 1.5rem;
+}
+
+.furniture-type {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.furniture-description {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.furniture-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.furniture-condition {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.condition-excellent {
+    background-color: var(--success);
+    color: var(--white);
+}
+
+.condition-good {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.condition-fair {
+    background-color: var(--warning);
+    color: var(--text);
+}
+
+.condition-poor {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--danger);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e1e1e1;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--secondary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background-color: #e1e1e1;
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background-color: #d1d1d1;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.add-btn {
+    background-color: var(--secondary);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-btn i {
+    font-size: 1rem;
+}
+
+.add-btn:hover {
+    background-color: var(--secondary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .search-filter {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #furniture-search {
+        min-width: 100%;
+    }
+    
+    .buildings-grid,
+    .furniture-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+.furniture-category {
+    margin-bottom: 3rem;
+}
+
+.category-title {
+    font-size: 1.75rem;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-type-count {
+    font-size: 1rem;
+    color: var(--text-light);
+    background: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: normal;
+}
+
+.empty-category {
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.no-distribution {
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+.furniture-summary-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.summary-header {
+    margin-bottom: 1.5rem;
+}
+
+.summary-info {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.summary-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.summary-details {
+    flex-grow: 1;
+}
+
+.summary-details h3 {
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.summary-details p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.total-count {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--secondary) !important;
+}
+
+.distribution-list {
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+.distribution-list h4 {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.room-distribution {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+}
+
+.room-name {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.room-count {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.count-badge {
+    background: var(--secondary);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.conditions-list {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.condition-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.condition-excellent {
+    background-color: var(--success);
+    color: var(--white);
+}
+
+.condition-good {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.condition-fair {
+    background-color: var(--warning);
+    color: var(--text);
+}
+
+.condition-poor {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .summary-info {
+        flex-direction: column;
+    }
+    
+    .summary-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .room-distribution {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .conditions-list {
+        flex-wrap: wrap;
+    }
+}
+
+/* Edit Mode Toggle */
+.edit-mode-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-left: 20px;
+}
+
+.edit-mode-toggle span {
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Hide edit buttons by default */
+.add-btn, 
+.delete-btn,
+.btn-danger,
+[onclick*="showModal('room')"],
+[onclick*="showModal('furniture')"],
+[onclick*="showModal('floor')"],
+[onclick*="deleteBuilding"],
+[onclick*="deleteFloor"],
+[onclick*="deleteRoom"],
+[onclick*="deleteFurniture"],
+[onclick*="editFurniture"] {
+    display: none;
+}
+
+/* Show edit buttons when edit mode is active */
+body.edit-mode .add-btn,
+body.edit-mode .delete-btn,
+body.edit-mode .btn-danger,
+body.edit-mode [onclick*="showModal('room')"],
+body.edit-mode [onclick*="showModal('furniture')"],
+body.edit-mode [onclick*="showModal('floor')"],
+body.edit-mode [onclick*="deleteBuilding"],
+body.edit-mode [onclick*="deleteFloor"],
+body.edit-mode [onclick*="deleteRoom"],
+body.edit-mode [onclick*="deleteFurniture"],
+body.edit-mode [onclick*="editFurniture"] {
+    display: inline-flex;
+}
+
+/* Rest of the switch styles remain the same */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #3498db;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.room-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.room-name {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.room-furniture-summary {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.room-empty {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.remove-furniture-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.remove-furniture-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+}
+
+.remove-furniture-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.remove-furniture-type {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.remove-furniture-quantity {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.remove-furniture-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-control input {
+    width: 60px;
+    padding: 0.25rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn-remove {
+    background-color: var(--danger);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-remove:hover {
+    background-color: #c0392b;
+}
+
+.room-furniture-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.furniture-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    padding: 2px;
+}
+
+.furniture-item:hover {
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+}
+
+/* Hide delete buttons by default */
+.furniture-item .btn-danger {
+    display: none;
+}
+
+/* Show delete buttons in edit mode */
+body.edit-mode .furniture-item .btn-danger {
+    display: inline-flex;
+}
+
+.furniture-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-quantity {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: none;
+}
+
+.btn-quantity:hover {
+    background-color: var(--secondary-light);
+}
+
+/* Show quantity buttons in edit mode */
+body.edit-mode .btn-quantity {
+    display: inline-flex;
+} 

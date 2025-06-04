@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEM IA Furniture Manager</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="STEM IA Logo">
+            <span>Furniture Manager</span>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-view="buildings">Buildings</button>
+            <button class="nav-btn" data-view="furniture">All Furniture</button>
+            <div class="edit-mode-toggle">
+                <span>Edit Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="edit-mode-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Buildings View -->
+        <div id="buildings-view" class="view-container active">
+            <div class="header-actions">
+                <h2>Buildings</h2>
+                <button class="add-btn" onclick="showModal('building')">
+                    <i class="fas fa-plus"></i> Add Building
+                </button>
+            </div>
+            <div class="buildings-grid" id="buildings-grid"></div>
+        </div>
+
+        <!-- Furniture View -->
+        <div id="furniture-view" class="view-container">
+            <div class="header-actions">
+                <h2>All Furniture</h2>
+                <div class="search-filter">
+                    <input type="text" id="furniture-search" placeholder="Search furniture...">
+                    <select id="condition-filter">
+                        <option value="">All Conditions</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="furniture-grid" id="furniture-grid"></div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal" id="building-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('building')">&times;</button>
+            <h3>Add Building</h3>
+            <form id="building-form">
+                <div class="form-group">
+                    <label for="building-name">Building Name</label>
+                    <input type="text" id="building-name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('building')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="floor-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('floor')">&times;</button>
+            <h3>Add Floor</h3>
+            <form id="floor-form">
+                <div class="form-group">
+                    <label for="floor-name">Floor Name</label>
+                    <input type="text" id="floor-name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('floor')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="room-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('room')">&times;</button>
+            <h3>Add Room</h3>
+            <form id="room-form">
+                <div class="form-group">
+                    <label for="room-name">Room Name</label>
+                    <input type="text" id="room-name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('room')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="furniture-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('furniture')">&times;</button>
+            <h3>Add Furniture</h3>
+            <form id="furniture-form">
+                <div class="form-group">
+                    <label for="furniture-category">Category</label>
+                    <select id="furniture-category" required onchange="updateFurnitureTypes()">
+                        <option value="">Select Category</option>
+                    </select>
+                    <button type="button" class="btn-secondary" onclick="showModal('category')" style="margin-top: 0.5rem;">
+                        <i class="fas fa-plus"></i> New Category
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label for="furniture-type">Type</label>
+                    <select id="furniture-type" required>
+                        <option value="">Select Type</option>
+                    </select>
+                    <button type="button" class="btn-secondary" onclick="showModal('type')" style="margin-top: 0.5rem;">
+                        <i class="fas fa-plus"></i> New Type
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label for="furniture-quantity">Quantity</label>
+                    <input type="number" id="furniture-quantity" required min="1" value="1">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('furniture')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="category-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('category')">&times;</button>
+            <h3>Add New Category</h3>
+            <form id="category-form">
+                <div class="form-group">
+                    <label for="category-id">Category ID (no spaces)</label>
+                    <input type="text" id="category-id" required pattern="[a-zA-Z0-9_-]+" title="Only letters, numbers, underscore and hyphen allowed">
+                </div>
+                <div class="form-group">
+                    <label for="category-name">Display Name</label>
+                    <input type="text" id="category-name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('category')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="type-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('type')">&times;</button>
+            <h3>Add New Furniture Type</h3>
+            <form id="type-form">
+                <div class="form-group">
+                    <label for="type-name">Type Name</label>
+                    <input type="text" id="type-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="type-description">Description</label>
+                    <textarea id="type-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="type-image">Image URL</label>
+                    <input type="url" id="type-image" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('type')">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html> 
