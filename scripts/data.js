@@ -6,12 +6,17 @@ const FURNITURE_CATEGORIES = {
             {
                 type: "Student Chair - Standard",
                 description: "Standard plastic student chair with metal frame",
-                image: "https://cdn.corenexis.com/view/?img=mm/ju10/jkMznU.png"
+                image: "https://cdn.corenexis.com/i/mm/ju10/jkMznU.png?token=d132213e2811723f3708d260531c34a0"
+            },
+            {
+                type: "Student Chair - Adjustable",
+                description: "Height-adjustable student chair with ergonomic design",
+                image: "https://rework-furniture.com/cdn/shop/files/l_Qvzdtg_5712de7f-f646-49b2-bfde-5228b102ff57.jpg?v=1722346203"
             },
             {
                 type: "Teacher Chair - Ergonomic",
                 description: "Ergonomic office chair with lumbar support and adjustable features",
-                image: "https://cdn.corenexis.com/view/?img=mm/ju10/IDoS9q.jpg"
+                image: "https://cdn.corenexis.com/i/mm/ju10/IDoS9q.jpg?token=d132213e2811723f3708d260531c34a0"
             }
         ]
     },
@@ -21,17 +26,17 @@ const FURNITURE_CATEGORIES = {
             {
                 type: "Student Desk - Standard",
                 description: "Standard student desk with storage shelf",
-                image: "https://cdn.corenexis.com/view/?img=mm/ju10/RsG37c.png"
+                image: "https://cdn.corenexis.com/i/mm/ju10/RsG37c.png?token=d132213e2811723f3708d260531c34a0"
             },
             {
                 type: "Computer Desk",
                 description: "Computer desk with cable management and keyboard tray",
-                image: "https://cdn.corenexis.com/view/?img=mm/ju10/9kZLEm.png"
+                image: "https://cdn.corenexis.com/i/mm/ju10/9kZLEm.png?token=d132213e2811723f3708d260531c34a0"
             },
             {
                 type: "Standard Table",
                 description: "A Standard Table that seats 2 students",
-                image: "https://cdn.corenexis.com/view/?img=mm/ju10/3la5f5.jpg"
+                image: "https://cdn.corenexis.com/i/mm/ju10/3la5f5.jpg?token=d132213e2811723f3708d260531c34a0"
             }
         ]
     },
