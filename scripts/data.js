@@ -6,22 +6,12 @@ const FURNITURE_CATEGORIES = {
             {
                 type: "Student Chair - Standard",
                 description: "Standard plastic student chair with metal frame",
-                image: "https://m.media-amazon.com/images/I/71RDuHnKRqL._AC_SL1500_.jpg"
-            },
-            {
-                type: "Student Chair - Adjustable",
-                description: "Height-adjustable student chair with ergonomic design",
-                image: "https://m.media-amazon.com/images/I/61vHhxEbUnL._AC_SL1500_.jpg"
+                image: "https://cdn.corenexis.com/view/?img=mm/ju10/jkMznU.png"
             },
             {
                 type: "Teacher Chair - Ergonomic",
                 description: "Ergonomic office chair with lumbar support and adjustable features",
-                image: "https://m.media-amazon.com/images/I/71K0JHhvdQL._AC_SL1500_.jpg"
-            },
-            {
-                type: "Lab Stool",
-                description: "Height-adjustable lab stool with backrest",
-                image: "https://m.media-amazon.com/images/I/61K4UJ9ZRQL._AC_SL1500_.jpg"
+                image: "https://cdn.corenexis.com/view/?img=mm/ju10/IDoS9q.jpg"
             }
         ]
     },
@@ -31,22 +21,17 @@ const FURNITURE_CATEGORIES = {
             {
                 type: "Student Desk - Standard",
                 description: "Standard student desk with storage shelf",
-                image: "https://m.media-amazon.com/images/I/71cZWKUVDVL._AC_SL1500_.jpg"
-            },
-            {
-                type: "Student Desk - Adjustable",
-                description: "Height-adjustable student desk with tiltable surface",
-                image: "https://m.media-amazon.com/images/I/71hnM4f93JL._AC_SL1500_.jpg"
+                image: "https://cdn.corenexis.com/view/?img=mm/ju10/RsG37c.png"
             },
             {
                 type: "Computer Desk",
                 description: "Computer desk with cable management and keyboard tray",
-                image: "https://m.media-amazon.com/images/I/81QpkfETj4L._AC_SL1500_.jpg"
+                image: "https://cdn.corenexis.com/view/?img=mm/ju10/9kZLEm.png"
             },
             {
-                type: "Lab Workstation",
-                description: "Chemical-resistant lab workstation with power outlets",
-                image: "https://m.media-amazon.com/images/I/71hnM4f93JL._AC_SL1500_.jpg"
+                type: "Standard Table",
+                description: "A Standard Table that seats 2 students",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju10/3la5f5.jpg"
             }
         ]
     },
