@@ -17,6 +17,46 @@ const FURNITURE_CATEGORIES = {
                 type: "Teacher Chair - Ergonomic",
                 description: "Ergonomic office chair with lumbar support and adjustable features",
                 image: "https://cdn.corenexis.com/i/mm/ju10/IDoS9q.jpg?token=d132213e2811723f3708d260531c34a0"
+            },
+            {
+                type: "high chair",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/a7KDbX.png"
+            },
+            {
+                type: "student chair 3",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/uZRBv6.png"
+            },
+            {
+                type: "student chair 2",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/zjbMLi.png"
+            },
+            {
+                type: "student chair 1",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/m15uuJ.png"
+            },
+            {
+                type: "cafeteria chair",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/212r6R.jpg"
+            },
+            {
+                type: "common area chair - east wing 1st floor ",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/qVmGF8.jpg"
+            },
+            {
+                type: "common area high chair",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=d/ju13/kGJNs2.jpg"
+            },
+            {
+                type: "netted backing chair",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/wEAui4.png"
             }
         ]
     },
@@ -37,6 +77,46 @@ const FURNITURE_CATEGORIES = {
                 type: "Standard Table",
                 description: "A Standard Table that seats 2 students",
                 image: "https://cdn.corenexis.com/i/mm/ju10/3la5f5.jpg?token=d132213e2811723f3708d260531c34a0"
+            },
+            {
+                type: "cafeteria table",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/J7Qord.png"
+            },
+            {
+                type: "student desk",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/fTQZz7.png"
+            },
+            {
+                type: "side table",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/h5pLtK.png"
+            },
+            {
+                type: "cafeteria high table",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/2F1T9i.jpg"
+            },
+            {
+                type: "cafeteria table",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=d/ju13/3SlUlL.jpg"
+            },
+            {
+                type: "common area high table",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/ToBzJk.jpg"
+            },
+            {
+                type: "teacher desk",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/I2PcDG.jpg"
+            },
+            {
+                type: "rolling table",
+                description: "",
+                image: "https://cdn.corenexis.com/view/?img=mm/ju13/T9zFKq.jpg"
             }
         ]
     },
